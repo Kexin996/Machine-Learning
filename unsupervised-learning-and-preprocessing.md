@@ -68,12 +68,22 @@ Normalizer
 
 
 
-### K-Means
+### K-Means Clustering
 
+* cluster by using mean distances
+* **decomposition - each data point is presents by its center**
+* specify the number of clusters
 * doesn't have the concept of noise ---> random assignment sometimes
 *
 
 
+
+### Agglomerative Clustering
+
+* specify the number of clusters
+* **can use dendrograms to represent hierarchy**
+* more uneven than k-means but less uneven than dbscan
+* no notion of center
 
 ### DBSCAN
 
@@ -82,6 +92,7 @@ Normalizer
 ![](.gitbook/assets/image.png)
 
 * density- based spatial clustering of applications with noise
+* **complex shapes**
 * eps
   * **increase eps ---> decrease noise** &#x20;
   * very large: only one cluster
@@ -93,6 +104,10 @@ Normalizer
   * setting eps to control the number of&#x20;
 * we need to scale them first
 * returns -1: noise
+* **can automatically determine the number of clusters**
+* **very differently sizes**
+
+
 
 
 
@@ -133,7 +148,12 @@ Normalizer
 
 * finding the odd one out
 
-##
+## Summary
+
+* all the clusterings can be applied on large datasets
+* mainly for **exploratory use**
+
+![](<.gitbook/assets/Screen Shot 2022-06-12 at 6.14.10 PM.png>)
 
 ****
 
