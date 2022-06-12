@@ -68,6 +68,11 @@ Normalizer
 
 
 
+### K-Means
+
+* doesn't have the concept of noise ---> random assignment sometimes
+*
+
 
 
 ### DBSCAN
@@ -77,11 +82,13 @@ Normalizer
 ![](.gitbook/assets/image.png)
 
 * density- based spatial clustering of applications with noise
-* increase eps ---> less clusters&#x20;
-  * decrease eps ---> more noise
+* eps
+  * **increase eps ---> decrease noise** &#x20;
+  * very large: only one cluster
+  * very small: all are noise
 * min\_samples
   * increase ---> some points become noise, it decides the **minimal cluster size**
-  * decrease --->
+  * **decrease ---> decrease noise**
 * eps default: 0.5
   * setting eps to control the number of&#x20;
 * we need to scale them first
@@ -118,7 +125,15 @@ Normalizer
 * add some noise or use different settings of parameters
 * many parameters same results ---> truthworthy
 
-**we don't know semantic meaning**
+**we don't know semantic meaning still ---> manual search**
+
+****
+
+### **Outlier Detection**
+
+* finding the odd one out
+
+##
 
 ****
 
