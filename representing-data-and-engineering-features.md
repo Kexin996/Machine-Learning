@@ -1,2 +1,3 @@
-# Page 1
+# Representing Data and Engineering Features
 
+## Categorical Variables
