@@ -93,6 +93,8 @@ Normalizer
 
 ### ARI (Adjusted Random Index) / NMI (Normalized Mutual Information)
 
+
+
 * &#x20;with ground truth (we have labelled data)
 * ARI can be negative, nit NMI: \[0,1]
 * a random assignment of cluster ---> 0
@@ -102,13 +104,25 @@ Normalizer
 
 
 
-### Silhouette Coefficiet
+### Silhouette Coefficient
 
 * unlabelled data
 * computes the compactness of a cluster
   * perfect: 1
 * **not allowed for complex shapes** and not work well in reality
-*
+
+
+
+### Robustness-Based Clustering Matrix&#x20;
+
+* add some noise or use different settings of parameters
+* many parameters same results ---> truthworthy
+
+**we don't know semantic meaning**
+
+****
+
+
 
 
 
