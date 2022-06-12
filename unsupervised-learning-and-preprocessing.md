@@ -91,8 +91,26 @@ Normalizer
 
 ## Comparing and Evaluating Clustering Algorithms
 
-### ARI (Adjusted Random Index)
+### ARI (Adjusted Random Index) / NMI (Normalized Mutual Information)
 
+* &#x20;with ground truth (we have labelled data)
+* ARI can be negative, nit NMI: \[0,1]
 * a random assignment of cluster ---> 0
+* optimum ---> 1
 * why not used accuracy\_score:
-  * we don't know whether the assigned cluster label 100% matches the ground truth&#x20;
+  * we don't know whether **the assigned cluster label 100% matches the ground truth**&#x20;
+
+
+
+### Silhouette Coefficiet
+
+* unlabelled data
+* computes the compactness of a cluster
+  * perfect: 1
+* **not allowed for complex shapes** and not work well in reality
+*
+
+
+
+
+
