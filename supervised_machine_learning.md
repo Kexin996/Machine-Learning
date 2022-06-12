@@ -46,6 +46,7 @@
 * high C: more complex
 * low C: less complex
 * multi-class classification
+* used for getting probability of a discrete variable
 
 
 
