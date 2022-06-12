@@ -80,7 +80,19 @@ Normalizer
 * increase eps ---> less clusters&#x20;
   * decrease eps ---> more noise
 * min\_samples
-  * increase ---> some points become noise, it decides the minimal size
+  * increase ---> some points become noise, it decides the **minimal cluster size**
   * decrease --->
 * eps default: 0.5
+  * setting eps to control the number of&#x20;
 * we need to scale them first
+* returns -1: noise
+
+
+
+## Comparing and Evaluating Clustering Algorithms
+
+### ARI (Adjusted Random Index)
+
+* a random assignment of cluster ---> 0
+* why not used accuracy\_score:
+  * we don't know whether the assigned cluster label 100% matches the ground truth&#x20;
