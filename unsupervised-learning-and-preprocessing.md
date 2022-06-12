@@ -65,3 +65,22 @@ Normalizer
 ![](<.gitbook/assets/Screen Shot 2022-06-07 at 5.51.39 PM.png>)
 
 * it is unsupervised but it can be used to check the dimension, something related to the algorithms that we can use
+
+
+
+
+
+### DBSCAN
+
+
+
+![](.gitbook/assets/image.png)
+
+* density- based spatial clustering of applications with noise
+* increase eps ---> less clusters&#x20;
+  * decrease eps ---> more noise
+* min\_samples
+  * increase ---> some points become noise, it decides the minimal size
+  * decrease --->
+* eps default: 0.5
+* we need to scale them first
