@@ -316,12 +316,54 @@ print(classification_report(y_test, pred_most_frequent,
 
 * decision\_function(data): return **a value of distance** from a point to the hyperplane the model represents
   * in binary the threshold: 0
-  * the points's decision\_function value > threshold ---> class 1
+  * **the points's decision\_function value > threshold** ---> class 1
     * **more class 1 ---> decrease threshold**
     * threshold based on **our needs**
+    * **it should be used in train set / development set / use cross validation**
 * predict\_proba(data): output the probability of instance being in each class
   * in binary the threshold: 0.5
     * e.g. the model is more than **50% sure** a point is positive ---> classify as positive
   * not works for all models
     * e.g. decision trees in full length ---> always 100% sure of decision
 
+
+
+#### Precision-recall curves &#x20;
+
+* goal: balance precision and recall ---> we need an **operating point (the requirement for recall)**
+
+```
+from sklearn.metrics import precision_recall_curve 
+precision, recall, thresholds = precision_recall_curve(
+        y_test, svc.decision_function(X_test))
+        
+# if we don't have decision():
+from sklearn.metrics import precision_recall_curve
+ 
+# RandomForestClassifier has predict_proba, but not decision_function
+    precision_rf, recall_rf, thresholds_rf = precision_recall_curve(
+        y_test, rf.predict_proba(X_test)[:, 1])
+# the second argument: a certainty measure of class 1
+
+```
+
+![](<.gitbook/assets/Screen Shot 2022-06-13 at 5.18.10 PM.png>)
+
+* best situation: **upper right corner**
+* summarize the curve: **average precision**
+  * **average precision at each threshold**
+  * the integral / area under the curve
+  * **the fraction of positive samples** in the dataset
+
+```
+from sklearn.metrics import average_precision_score
+
+ap_rf = average_precision_score(y_test, rf.predict_proba(X_test)[:, 1])
+```
+
+
+
+#### ROC curves
+
+* receiver operating characteristics curve
+*
