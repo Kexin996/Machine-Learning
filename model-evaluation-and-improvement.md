@@ -338,7 +338,6 @@ precision, recall, thresholds = precision_recall_curve(
         y_test, svc.decision_function(X_test))
         
 # if we don't have decision():
-from sklearn.metrics import precision_recall_curve
  
 # RandomForestClassifier has predict_proba, but not decision_function
     precision_rf, recall_rf, thresholds_rf = precision_recall_curve(
@@ -366,4 +365,26 @@ ap_rf = average_precision_score(y_test, rf.predict_proba(X_test)[:, 1])
 #### ROC curves
 
 * receiver operating characteristics curve
-*
+* **false positive rate versus true positive rate**
+
+![](<.gitbook/assets/Screen Shot 2022-06-13 at 6.40.55 PM.png>)
+
+```
+from sklearn.metrics import roc_curve
+fpr, tpr, thresholds = roc_curve(y_test, svc.decision_function(X_test))
+```
+
+![](<.gitbook/assets/Screen Shot 2022-06-13 at 6.42.15 PM.png>)
+
+* ideal: **top left**
+* \***auc** (area under the curve):
+  * it is **the ability to distinguish the positive class values from the negative class values**&#x20;
+  * another interpretation: the **probability of positive values ranked higher than negative values**
+  * it is **0.5 if select randomly**
+  * **no default**
+
+```
+from sklearn.metrics import roc_auc_score
+rf_auc = roc_auc_score(y_test, rf.predict_proba(X_test)[:, 1])
+```
+
