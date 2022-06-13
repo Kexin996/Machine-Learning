@@ -140,7 +140,23 @@ grid_search.best_score_
 
 grid_search.best_estimator_
 # access the attributes of the model
+
+grid_search.cv_results_
+# it returns a dictionary
+# in order to see it, we need to turn it into a dataframe
+results = pd.DataFrame(grid_search.cv_results_)
 ```
 
 * best\__score_\_: the best score while performing cross validation on training set
 * score: the score we get from using the whole training set
+* we can use heatmap to see the sensitivity of the mode with respect to parameters
+* no change in accuracy for different parameter in the range&#x20;
+  * \---> **wrong range of parameter** we choose
+  * \---> the feature may be **trivial**
+  * so it is good to try **extreme points**&#x20;
+* vertical stripe pattern ---> maybe **only one feature** matters
+
+
+
+####
+
