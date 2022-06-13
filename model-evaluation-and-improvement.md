@@ -388,3 +388,24 @@ from sklearn.metrics import roc_auc_score
 rf_auc = roc_auc_score(y_test, rf.predict_proba(X_test)[:, 1])
 ```
 
+
+
+### Metrics for Multiclass Classification
+
+* we don't know what accuracy means
+* use confusion matrix
+
+![](<.gitbook/assets/Screen Shot 2022-06-13 at 6.57.15 PM.png>)
+
+* f-score: only one class is positive and the other is negative
+* average f-score:
+  * macro: unweighted average (equal weight of each class) average mean
+    * **class equal**
+  * weighted (**default**): the mean weighted by the support
+  * micro: computes **the total false positives, false negatives, and true positives of all the classes, then compute the  f-score using these counts**
+    * **\*sample equal\***
+
+```
+print("Micro average f1 score: {:.3f}".format (
+f1_score(y_test, pred, average="micro")))
+```
