@@ -312,3 +312,15 @@ print(classification_report(y_test, pred_most_frequent,
 
 
 
+#### Taking uncertainty into account
+
+* decision\_function(data): return **a value of distance** from a point to the hyperplane the model represents
+  * in binary the threshold: 0
+  * the points's decision\_function value > threshold ---> class 1
+    * **more class 1 ---> decrease threshold**
+    * threshold based on **our needs**
+* predict\_proba(data): output the probability of instance being in each class
+  * in binary the threshold: 0.5
+    * e.g. the model is more than 50% sure a point is positive ---> classify as positive
+  *
+
