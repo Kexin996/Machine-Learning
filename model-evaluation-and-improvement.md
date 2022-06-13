@@ -260,14 +260,55 @@ confusion = confusion_matrix(y_test, pred_logreg)
 
 * it is manual and we need time to **summarize** it
 
-#### Precision - Positive Predictive Value
+#### Precision
 
+* **positive predictive value** (PPV)
 * when the goal is to limit the number of **false positive**
 
 ![](<.gitbook/assets/Screen Shot 2022-06-13 at 4.12.57 PM.png>)
 
 #### Recall
 
-* how many **positive samples** are captured
+* sensitivity, hit rate, or **true positive rate** (TPR)
+* **how many positive samples are captured**
+* when we want to **avoid** **false negative**
 
 ![](<.gitbook/assets/Screen Shot 2022-06-13 at 4.14.39 PM.png>)
+
+* there is a trade off between **precision and recall**
+
+
+
+#### F-score
+
+* one way to summarize precision and recall
+* more robust than accuracy for imbalanced dataset
+* f1 score:
+
+![](<.gitbook/assets/Screen Shot 2022-06-13 at 4.24.37 PM.png>)
+
+```
+from sklearn.metrics import f1_score
+
+score1 = f1_score(y_test, pred_most_frequent)
+
+```
+
+* disadvantage: **harder to interpret and explain**
+* more comprehensive summary:
+
+```
+from sklearn.metrics import classification_report
+
+print(classification_report(y_test, pred_most_frequent,
+                                target_names=["not nine", "nine"]))
+```
+
+![support: the number of samples to each class](<.gitbook/assets/Screen Shot 2022-06-13 at 4.29.18 PM.png>)
+
+* how to get the 'avg':
+  * (each number in the column except for the support, working as weight, \* the corresponding class value in support) / total
+* we need to **look at all the values inside the report together to differentiate a dummy bad model and a good model.**
+
+
+
