@@ -98,5 +98,10 @@ X_poly = poly.transform(X)
 
 
 
+### Univariate Nonlinear Transformations
+
+* the models work best for **gaussian distribution**&#x20;
+  * log / ex ---> use them to make the data distribution normal&#x20;
+
 ###
 
