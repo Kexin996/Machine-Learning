@@ -321,6 +321,7 @@ print(classification_report(y_test, pred_most_frequent,
     * threshold based on **our needs**
 * predict\_proba(data): output the probability of instance being in each class
   * in binary the threshold: 0.5
-    * e.g. the model is more than 50% sure a point is positive ---> classify as positive
-  *
+    * e.g. the model is more than **50% sure** a point is positive ---> classify as positive
+  * not works for all models
+    * e.g. decision trees in full length ---> always 100% sure of decision
 
