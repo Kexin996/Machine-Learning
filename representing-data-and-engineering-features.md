@@ -101,7 +101,45 @@ X_poly = poly.transform(X)
 ### Univariate Nonlinear Transformations
 
 * the models work best for **gaussian distribution**&#x20;
-  * log / ex ---> use them to make the data distribution normal&#x20;
+  * log / ex ---> **use them to make the data distribution normal**&#x20;
+* important for simple models: **Bayes / linear regression**
 
-###
 
+
+## Automatic Feature Selection
+
+* supervised
+
+
+
+### Univariate Statistics (ANOVA)
+
+* analysis of variance
+* **select the variables with high confidence**
+* independent of models
+
+```
+SelectKBest ---> select a fixed number of features
+SelectPercentile ---> select a fixed percentage of features
+```
+
+
+
+### Model-Based Feature Selection
+
+* need measure of importance for each feature
+  * decision trees: feature\_importances\_
+* **the model for feature selection doesn't have to be the same for the final models**
+* consider all features at once
+* more power&#x20;
+
+```
+from sklearn.feature_selection import SelectFromModel 
+from sklearn.ensemble import RandomForestClassifier 
+
+select = SelectFromModel(
+        RandomForestClassifier(n_estimators=100, random_state=42),
+        threshold="median")
+
+# select will selects all the feature > threshold (median)
+```
