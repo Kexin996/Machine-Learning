@@ -399,9 +399,9 @@ rf_auc = roc_auc_score(y_test, rf.predict_proba(X_test)[:, 1])
 
 * f-score: only one class is positive and the other is negative
 * average f-score:
-  * macro: unweighted average (equal weight of each class) average mean
+  * macro: unweighted average (equal weight of each class) = **average mean**
     * **class equal**
-  * weighted (**default**): the mean weighted by the support
+  * weighted (**default**): the mean **weighted by the support**
   * micro: computes **the total false positives, false negatives, and true positives of all the classes, then compute the  f-score using these counts**
     * **\*sample equal\***
 
@@ -409,3 +409,31 @@ rf_auc = roc_auc_score(y_test, rf.predict_proba(X_test)[:, 1])
 print("Micro average f1 score: {:.3f}".format (
 f1_score(y_test, pred, average="micro")))
 ```
+
+* **regressor: r^2 is good enough**
+
+
+
+### Using Evaluation Metrics in Model Selection
+
+* how to change scoring:
+
+```
+# change scoring in cross validation
+# we simply add one more string
+roc_auc = cross_val_score(SVC(), digits.data, digits.target == 9,
+scoring="roc_auc")
+
+# change the metric used to pick the best parameters
+# because the model selection will choose the one with highest scoring
+grid = GridSearchCV(SVC(), param_grid=param_grid, scoring="roc_auc")
+
+```
+
+
+
+## Summary
+
+* train dataset: training
+* validation / development dataset: selects models and parameters
+* test dataset: testing
