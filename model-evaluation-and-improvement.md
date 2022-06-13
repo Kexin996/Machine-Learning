@@ -104,6 +104,43 @@ scores = cross_val_score(logreg, X, y, groups, cv=GroupKFold(n_splits=3))
 
 ## Grid Search with Cross-Validation
 
-* takes a long time
+* takes a long time ---> train more models, due to the parameter c'cv'
 
 ![](<.gitbook/assets/Screen Shot 2022-06-13 at 2.00.45 PM.png>)
+
+* it is quite similar to: **we use cross validation on the training set to split into the 'real' test set and development set**
+* how to use it:
+
+```
+# we need to create a parameter grid in dictionary form
+# indicate the range we want
+# ex:
+param_grid = {'C': [0.001, 0.01, 0.1, 1, 10, 100],
+                  'gamma': [0.001, 0.01, 0.1, 1, 10, 100]}
+
+from sklearn.model_selection import GridSearchCV 
+from sklearn.svm import SVC
+grid_search = GridSearchCV(SVC(), param_grid, cv=5)
+
+# it will use cross-validation instead of having three sets
+# but we still need the train set and test set
+X_train, X_test, y_train, y_test = train_test_split(
+        iris.data, iris.target, random_state=0)
+
+grid_search.fit(X_train, y_train)
+# it will use SCV() to predict
+# automatically uses the best parameters to fit the data
+
+grid_search.best_params_
+# tell us the parameters it chooses
+
+grid_search.best_score_
+# best cross-validation accuracy (the mean score over the different splits
+# while using the best parameters)
+
+grid_search.best_estimator_
+# access the attributes of the model
+```
+
+* best\__score_\_: the best score while performing cross validation on training set
+* score: the score we get from using the whole training set
