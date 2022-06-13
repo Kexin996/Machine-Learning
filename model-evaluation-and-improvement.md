@@ -238,21 +238,36 @@ n_jobs = -1 ---> using all available  CPU cores
 * type I errors: false positive ---> no but shows yes
 * type II errors: false negative ---> yes but shows no
 * imbalanced datasets: in a data set, **one class is much more frequent than the others**
-  * **the learning model is biased**&#x20;
+  * **the learning model is biased ---> the accuracy is fake**
+  * e.g. the accuracy 90% from 90% data are true, 10% data are false may not be helpful
 * the classification will always predict the majority, but how about the **costs**?&#x20;
   * **the cost for false positive and false negative are different**
 
 
 
-#### Confusion Matrix
+### Confusion Matrix
 
 * two x two matrix
 * rows: true classes
 * columns: predicted data
 
+![](<.gitbook/assets/Screen Shot 2022-06-13 at 4.06.10 PM.png>)
 
+```
+from sklearn.metrics import confusion_matrix 
+confusion = confusion_matrix(y_test, pred_logreg)
+```
 
+* it is manual and we need time to **summarize** it
 
+#### Precision - Positive Predictive Value
 
+* when the goal is to limit the number of **false positive**
 
+![](<.gitbook/assets/Screen Shot 2022-06-13 at 4.12.57 PM.png>)
 
+#### Recall
+
+* how many **positive samples** are captured
+
+![](<.gitbook/assets/Screen Shot 2022-06-13 at 4.14.39 PM.png>)
