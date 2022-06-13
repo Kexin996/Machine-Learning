@@ -104,3 +104,6 @@ scores = cross_val_score(logreg, X, y, groups, cv=GroupKFold(n_splits=3))
 
 ## Grid Search with Cross-Validation
 
+* takes a long time
+
+![](<.gitbook/assets/Screen Shot 2022-06-13 at 2.00.45 PM.png>)
