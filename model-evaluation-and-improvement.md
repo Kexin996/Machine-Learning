@@ -158,5 +158,101 @@ results = pd.DataFrame(grid_search.cv_results_)
 
 
 
-####
+#### Search over spaces that are not grids
+
+* sometimes trying the combination of all the parameters can be different
+  * e.g. SVC ---> different kernels, different
+
+```
+# we make it a list of dictionaries
+param_grid = [{'kernel': ['rbf'],
+                   'C': [0.001, 0.01, 0.1, 1, 10, 100],
+                   'gamma': [0.001, 0.01, 0.1, 1, 10, 100]},
+                  {'kernel': ['linear'],
+'C': [0.001, 0.01, 0.1, 1, 10, 100]}]
+
+```
+
+
+
+#### Using different cross-validation strategies with grid search
+
+* by default, the grid-validation uses **stratified k-fold cross validation**
+* we can change the parameter 'cv'
+
+
+
+#### Nested Cross Validation
+
+* reason:
+  * we still need to do do a single split of test and train data
+* nested cross validation: **multiple split ---> two loops**
+  * outer loop: splitting the training and testing sets
+  * inner loop: running a grid search
+* return a list of scores ---> how well it can generalize
+* **doesn't provide a model that can be used for new data**
+
+```
+# inplementation: 
+# we just add one instance
+scores = cross_val_score(GridSearchCV(SVC(), param_grid, cv=5),
+                             iris.data, iris.target, cv=5)
+
+# the inner cross-validation strategies don't have to be the same
+# as the outer
+```
+
+* time consuming&#x20;
+
+
+
+### \*Parallelizing cross-validation and grid search
+
+* **building a model using a particular parameter setting or a particular cross validation split is independent from other parameters and models ---> parallelization over multiple CPU cores**
+
+```
+# we can do it by setting the n_jobs
+n_jobs = -1 ---> using all available  CPU cores
+```
+
+* scikit-learn **does not allow nesting of parallel operations**.
+  * we cannot use the same jobs in different operations
+* p. 277
+
+
+
+## Evaluation Metrics and Scoring
+
+* business metric: **high-level goal**
+* business impact: the **consequence of choosing a particular algorithm for the application**
+* the metric should capture the business impact
+
+
+
+### Metrics for Binary Classification
+
+* accuracy:
+
+![](<.gitbook/assets/image (1).png>)
+
+* type I errors: false positive ---> no but shows yes
+* type II errors: false negative ---> yes but shows no
+* imbalanced datasets: in a data set, **one class is much more frequent than the others**
+  * **the learning model is biased**&#x20;
+* the classification will always predict the majority, but how about the **costs**?&#x20;
+  * **the cost for false positive and false negative are different**
+
+
+
+#### Confusion Matrix
+
+* two x two matrix
+* rows: true classes
+* columns: predicted data
+
+
+
+
+
+
 
